@@ -18,8 +18,8 @@ classifiers = [
 dynamic = ["version", "dependencies"]
 
 [project.urls]
-Homepage = "tbd"
-Issues = "tbd"
+Homepage = "https://github.com/jme45/aircraft_classifiers_jme45"
+Issues = "https://github.com/jme45/aircraft_classifiers_jme45/issues"
 
 [tool]
 
