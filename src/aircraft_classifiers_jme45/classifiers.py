@@ -14,8 +14,8 @@ from PIL import Image
 from torch import nn
 from torchvision.transforms import v2 as transf_v2
 
-import aircraft_types as act
-import parameters
+from . import aircraft_types as act
+from . import parameters
 
 
 def inverse_of_normalisation_transform(transform):
@@ -86,11 +86,12 @@ class AircraftClassifier:
         aircraft_subset_name: str,
         load_classifier_pretrained_weights: bool,
         classifier_pretrained_weights_file: Optional[str | Path] = None,
+        data_augmentation_transforms: transf_v2.Transform = transf_v2.Identity(),
     ):
         """
         Initialise an AircraftClassifier.
 
-        :param model_type: "vit_b_16", "vit_l_16", "effnet_b2", "effnet_b7"
+        :param model_type: "vit_b_16", "vit_l_16", "effnet_b2", "effnet_b7", "trivial"
         :param aircraft_subset_name: name of the aircraft subset ('TEST', 'CIVILIAN_JETS',..).
             Must be one defined in aircraft_types.AIRCRAFT_SUBSETS
         :param load_classifier_pretrained_weights: whether to load classifier
@@ -136,7 +137,7 @@ class AircraftClassifier:
             [
                 parameters.TO_TENSOR_TRANSFORMS,
                 parameters.CropAuthorshipInformation(),
-                parameters.DATA_AUGMENTATION_TRANSFORMS,
+                data_augmentation_transforms,
                 self.transforms,
             ]
         )

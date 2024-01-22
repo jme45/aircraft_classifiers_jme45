@@ -7,9 +7,6 @@ import torch
 from torchvision.transforms import v2 as transf_v2
 
 
-ANNOTATION_LEVEL = "family"
-DATA_ROOT_DIR = "data"
-DATA_AUGMENTATION_TRANSFORMS = transf_v2.TrivialAugmentWide()
 # Transform to convert PIL.Image to Tensor (what the old ToTensor did)
 TO_TENSOR_TRANSFORMS = transf_v2.Compose(
     [
@@ -45,4 +42,3 @@ CROP_TRANSFORM = transf_v2.Compose(
         CropAuthorshipInformation(),
     ]
 )
-BATCH_SIZE = 32

@@ -1,3 +1,7 @@
+"""
+Definition of aircraft types and associated target transform for the data.
+"""
+
 AIRCRAFT_SUBSETS = {
     # Reduced set for testing purposes.
     "TEST": ["A380", "Boeing 747", "DC-8"],
