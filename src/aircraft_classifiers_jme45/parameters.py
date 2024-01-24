@@ -7,14 +7,6 @@ import torch
 from torchvision.transforms import v2 as transf_v2
 
 
-# Transform to convert PIL.Image to Tensor (what the old ToTensor did)
-TO_TENSOR_TRANSFORMS = transf_v2.Compose(
-    [
-        transf_v2.ToImage(),
-        transf_v2.ToDtype(torch.float32, scale=True),
-    ]
-)
-
 
 class CropAuthorshipInformation(torch.nn.Module):
     """

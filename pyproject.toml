@@ -23,6 +23,10 @@ Issues = "https://github.com/jme45/aircraft_classifiers_jme45/issues"
 
 [tool]
 
+[tool.hatch.metadata]
+# To allow dependencies which are only on github, but not pypi.
+allow-direct-references = true
+
 [tool.hatch.version]
 path = "src/aircraft_classifiers_jme45/__about__.py"
 

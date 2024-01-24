@@ -3,3 +3,4 @@ torchvision
 torchmetrics
 pytest
 numpy
+transfer-learning-vision-classifiers @ git+https://github.com/jme45/transfer_learning_vision_classifiers@main
