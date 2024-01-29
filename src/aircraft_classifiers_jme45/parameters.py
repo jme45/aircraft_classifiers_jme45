@@ -7,7 +7,6 @@ import torch
 from torchvision.transforms import v2 as transf_v2
 
 
-
 class CropAuthorshipInformation(torch.nn.Module):
     """
     The lowest 20 pixels contain the authorship information for the picture

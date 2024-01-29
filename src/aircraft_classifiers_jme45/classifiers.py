@@ -49,7 +49,6 @@ def inverse_of_normalisation_transform(transform):
         return transf_v2.Identity()
 
 
-
 class AircraftClassifier(tlvs_classifiers.TransferLearningVisionClassifier):
     """
     Contains a classifier for aircraft. It contains a model (nn.Module) and the required transform
@@ -78,12 +77,13 @@ class AircraftClassifier(tlvs_classifiers.TransferLearningVisionClassifier):
             f"aircraft_subset_name={aircraft_subset_name} undefined, "
             f"not one of {list(act.AIRCRAFT_SUBSETS.keys())}"
         )
-        super().__init__(model_type=model_type, class_names= act.AIRCRAFT_SUBSETS[aircraft_subset_name],  load_classifier_pretrained_weights=load_classifier_pretrained_weights,
-                         classifier_pretrained_weights_file=classifier_pretrained_weights_file)
+        super().__init__(
+            model_type=model_type,
+            class_names=act.AIRCRAFT_SUBSETS[aircraft_subset_name],
+            load_classifier_pretrained_weights=load_classifier_pretrained_weights,
+            classifier_pretrained_weights_file=classifier_pretrained_weights_file,
+        )
         self.aircraft_subset_name = aircraft_subset_name.upper()
-
-
-
 
         # If we train on the FGVCAircraft dataset, we need to implement cropping, same for prediction.
         # If we do prediction on a new picture, crop shouldn't be done.
@@ -107,4 +107,3 @@ class AircraftClassifier(tlvs_classifiers.TransferLearningVisionClassifier):
             [tlvs_classifiers.TO_TENSOR_TRANSFORMS, self.transforms]
         )
         self.inv_of_normalisation = inverse_of_normalisation_transform(self.transforms)
-

@@ -27,6 +27,7 @@ def test_trivial_classifier(tmp_path):
         trivial_classifier_loaded.model.layers[1].weight,
     )
 
+
 def _get_classifier_and_image():
     torch.manual_seed(0)
 
@@ -40,7 +41,6 @@ def _get_classifier_and_image():
 
 
 def test_predict_without_crop():
-
     trivial_classifier, img = _get_classifier_and_image()
 
     # Now make a prediction.
@@ -53,14 +53,14 @@ def test_predict_without_crop():
 
 
 def test_predict_with_crop():
-
     trivial_classifier, img = _get_classifier_and_image()
 
     # Now make a prediction.
-    pred = trivial_classifier.predict(img, custom_predict_transform=trivial_classifier.predict_transform_with_crop)
+    pred = trivial_classifier.predict(
+        img, custom_predict_transform=trivial_classifier.predict_transform_with_crop
+    )
 
     # Get the prediction probability for A380 and check it matches.
     pred_prob_A380_expected = 0.26729393005371094
     pred_prob_A380 = pred[0]["A380"]
     assert np.isclose(pred_prob_A380_expected, pred_prob_A380)
-
